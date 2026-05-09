@@ -5,7 +5,7 @@ TARGET_NAME := list-proto
 # Test Unit Source Directory
 TU_SRC_DIR := src
 # Source files which need to be compiled
-SRCS += main.c
+SRCS += main.c simp_init.c ds.c
 
 # Auto Expansions (update not required)
 TARGET    := $(BIN_DIR)/$(TARGET_NAME)
