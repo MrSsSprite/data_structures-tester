@@ -12,5 +12,6 @@ int main(void)
    UNITY_BEGIN();
 
    RUN_TEST(test_simp_init);
+   RUN_TEST(test_insert_head);
    return UNITY_END();
 }
