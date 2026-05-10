@@ -10,11 +10,6 @@ List__i__declare();
 /*------------------------- Public Declarations END --------------------------*/
 
 /*--------------------------- Public Struct Reveal ---------------------------*/
-struct list_node__i
-{
-   struct list_node__i *next;
-   int value;
-};
 struct list__i
 {
    struct list_node__i *head;
