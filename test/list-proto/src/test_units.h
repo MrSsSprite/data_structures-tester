@@ -3,6 +3,6 @@
 
 /*-------------------------- Test Unit Declarations --------------------------*/
 void test_simp_init(void);
-   /*------------------------ Test Unit Declarations END ------------------------*/
+/*------------------------ Test Unit Declarations END ------------------------*/
 
 #endif
