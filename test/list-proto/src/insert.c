@@ -37,10 +37,8 @@ void test_insert_head_seq(size_t sz)
    TEST_ASSERT_NOT_NULL(iter);
 
    for (size_t i = sz; i; iter = &(*iter)->next)
-    {
-      i--;
-      TEST_ASSERT_EQUAL_INT(i, (*iter)->value);
-    }
+      TEST_ASSERT_EQUAL_INT(--i, (*iter)->value);
+
 
    list__i_deinit(list);
 }
