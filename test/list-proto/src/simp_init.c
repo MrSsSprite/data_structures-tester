@@ -4,19 +4,6 @@
 /*--------------------------- Private Includes END ---------------------------*/
 
 
-/*----------------------------- Private Defines ------------------------------*/
-struct list_node__i
-{
-   struct list_node__i *next;
-   int value;
-};
-struct list__i
-{
-   struct list_node__i *head;
-   size_t size;
-};
-/*--------------------------- Private Defines END ----------------------------*/
-
 /*-------------------------------- Test Unit ---------------------------------*/
 void test_simp_init(void)
 {
