@@ -26,7 +26,6 @@ void test_insert_head_seq(size_t sz)
 
    for (size_t i = 0; i < sz; i++)
       TEST_ASSERT_EQUAL_INT(0, list__i_push(list, i));
-
    TEST_ASSERT_EQUAL_size_t(sz, list->size);
    TEST_ASSERT_NOT_NULL(list->head);
 
