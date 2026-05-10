@@ -8,7 +8,6 @@
 void test_simp_init(void)
 {
    List__i list = list__i_init();
-
    TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
 
    TEST_ASSERT_NULL_MESSAGE(list->head,
