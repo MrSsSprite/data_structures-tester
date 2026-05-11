@@ -21,6 +21,11 @@ void test_insert_head(void)
       test_insert_head_random(list_sz);
     }
 }
+
+
+void test_insert_mid(void)
+{
+}
 /*------------------------------ Test Units END ------------------------------*/
 
 

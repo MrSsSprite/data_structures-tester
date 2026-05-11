@@ -4,6 +4,7 @@
 /*-------------------------- Test Unit Declarations --------------------------*/
 void test_simp_init(void);
 void test_insert_head(void);
+void test_insert_mid(void);
 /*------------------------ Test Unit Declarations END ------------------------*/
 
 #endif
