@@ -9,6 +9,7 @@
 /*--------------------------- Private Declarations ---------------------------*/
 void test_insert_head_seq(size_t sz);
 void test_insert_head_random(size_t sz);
+void test_insert_mid_once(size_t sz);
 /*------------------------- Private Declarations END -------------------------*/
 
 
@@ -19,6 +20,7 @@ void test_insert_head(void)
     {
       test_insert_head_seq(list_sz);
       test_insert_head_random(list_sz);
+      test_insert_mid_once(list_sz);
     }
 }
 
@@ -83,6 +85,53 @@ void test_insert_head_random(size_t sz)
    TEST_ASSERT_NULL(*iter);
 
    free(arr);
+   list__i_deinit(list);
+}
+
+
+void test_insert_mid_once(size_t sz)
+{
+   size_t skip_idx = sz / 2;
+   List__i list = list__i_init();
+   TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
+   TEST_ASSERT_NULL_MESSAGE(list->head,
+                            "`list->head' not initialized to NULL");
+   TEST_ASSERT_EQUAL_UINT_MESSAGE(0, list->size,
+                                  "`list->size' not initialized to 0");
+
+   for (size_t i = 0; i < sz; i++)
+    {
+      if (i == skip_idx) continue;
+      TEST_ASSERT_EQUAL_INT(0, list__i_push(list, i));
+    }
+   TEST_ASSERT_EQUAL_size_t(sz - 1, list->size);
+   if (sz - 1)
+      TEST_ASSERT_NOT_NULL(list->head);
+   else
+      TEST_ASSERT_NULL(list->head);
+
+   List_Node__i *iter = list__i_head(list),
+                *ins_pt = list__i_head(list);
+   TEST_ASSERT_NOT_NULL(iter);
+   TEST_ASSERT_NOT_NULL(ins_pt);
+
+   for (size_t i = sz - 1; i; iter = &(*iter)->next)
+    {
+      TEST_ASSERT_NOT_NULL(*iter);
+      if (--i == skip_idx) { ins_pt = iter; continue; }
+      TEST_ASSERT_EQUAL_INT(i, (*iter)->value);
+    }
+
+   int i_val = skip_idx;
+   list__i_insert(list, ins_pt, &i_val, 1);
+
+   TEST_ASSERT_EQUAL_size_t(sz, list->size);
+   TEST_ASSERT_NOT_NULL(list->head);
+   TEST_ASSERT_NOT_NULL(iter);
+   iter = list__i_head(list);
+   for (size_t i = sz; i; iter = &(*iter)->next)
+      TEST_ASSERT_EQUAL_INT(--i, (*iter)->value);
+
    list__i_deinit(list);
 }
 /*------------------------------ Test Cases END ------------------------------*/
