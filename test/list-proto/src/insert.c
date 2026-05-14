@@ -115,10 +115,10 @@ void test_insert_mid_once(size_t sz)
    TEST_ASSERT_NOT_NULL(iter);
    TEST_ASSERT_NOT_NULL(ins_pt);
 
-   for (size_t i = sz - 1; i; iter = &(*iter)->next)
+   for (size_t i = sz; i; iter = &(*iter)->next)
     {
-      TEST_ASSERT_NOT_NULL(*iter);
       if (--i == skip_idx) { ins_pt = iter; continue; }
+      TEST_ASSERT_NOT_NULL(*iter);
       TEST_ASSERT_EQUAL_INT(i, (*iter)->value);
     }
 
