@@ -20,13 +20,16 @@ void test_insert_head(void)
     {
       test_insert_head_seq(list_sz);
       test_insert_head_random(list_sz);
-      test_insert_mid_once(list_sz);
     }
 }
 
 
 void test_insert_mid(void)
 {
+   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+    {
+      test_insert_mid_once(list_sz);
+    }
 }
 /*------------------------------ Test Units END ------------------------------*/
 
