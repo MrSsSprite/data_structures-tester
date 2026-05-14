@@ -113,10 +113,8 @@ void test_insert_mid_once(size_t sz)
    else
       TEST_ASSERT_NULL(list->head);
 
-   List_Node__i *iter = list__i_head(list),
-                *ins_pt = list__i_head(list);
+   List_Node__i *iter = list__i_head(list), *ins_pt;
    TEST_ASSERT_NOT_NULL(iter);
-   TEST_ASSERT_NOT_NULL(ins_pt);
 
    for (size_t i = sz; i;)
     {
