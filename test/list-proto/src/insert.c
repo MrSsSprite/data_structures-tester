@@ -34,6 +34,7 @@ void test_insert_mid(void)
 /*-------------------------------- Test Cases --------------------------------*/
 void test_insert_head_seq(size_t sz)
 {
+   TEST_ASSERT_NOT_EQUAL_size_t(0, sz);
    List__i list = list__i_init();
    TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
    TEST_ASSERT_NULL_MESSAGE(list->head,
@@ -58,6 +59,7 @@ void test_insert_head_seq(size_t sz)
 
 void test_insert_head_random(size_t sz)
 {
+   TEST_ASSERT_NOT_EQUAL_size_t(0, sz);
    size_t i;
    int *arr = malloc(sizeof(int) * sz);
    TEST_ASSERT_NOT_NULL(arr);
@@ -91,6 +93,7 @@ void test_insert_head_random(size_t sz)
 
 void test_insert_mid_once(size_t sz)
 {
+   TEST_ASSERT_NOT_EQUAL_size_t(0, sz);
    size_t skip_idx = sz / 2;
    List__i list = list__i_init();
    TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
