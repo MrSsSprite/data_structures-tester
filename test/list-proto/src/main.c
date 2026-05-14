@@ -13,5 +13,6 @@ int main(void)
 
    RUN_TEST(test_simp_init);
    RUN_TEST(test_insert_head);
+   RUN_TEST(test_insert_mid);
    return UNITY_END();
 }
