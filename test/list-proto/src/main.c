@@ -12,7 +12,7 @@ int main(void)
    UNITY_BEGIN();
 
    RUN_TEST(test_simp_init);
-   RUN_TEST(test_insert_head);
-   RUN_TEST(test_insert_mid);
+   RUN_TEST(test_push);
+   RUN_TEST(test_insert);
    return UNITY_END();
 }

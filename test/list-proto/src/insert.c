@@ -14,7 +14,7 @@ void test_insert_mid_once(size_t sz);
 
 
 /*-------------------------------- Test Units --------------------------------*/
-void test_insert_head(void)
+void test_push(void)
 {
    for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
     {
@@ -24,7 +24,7 @@ void test_insert_head(void)
 }
 
 
-void test_insert_mid(void)
+void test_insert(void)
 {
    for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
     {
