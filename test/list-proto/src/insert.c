@@ -7,8 +7,8 @@
 
 
 /*--------------------------- Private Declarations ---------------------------*/
-void test_insert_head_seq(size_t sz);
-void test_insert_head_random(size_t sz);
+void test_push_seq(size_t sz);
+void test_push_random(size_t sz);
 void test_insert_mid_once(size_t sz);
 /*------------------------- Private Declarations END -------------------------*/
 
@@ -18,8 +18,8 @@ void test_insert_head(void)
 {
    for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
     {
-      test_insert_head_seq(list_sz);
-      test_insert_head_random(list_sz);
+      test_push_seq(list_sz);
+      test_push_random(list_sz);
     }
 }
 
@@ -35,7 +35,7 @@ void test_insert_mid(void)
 
 
 /*-------------------------------- Test Cases --------------------------------*/
-void test_insert_head_seq(size_t sz)
+void test_push_seq(size_t sz)
 {
    TEST_ASSERT_NOT_EQUAL_size_t(0, sz);
    List__i list = list__i_init();
@@ -60,7 +60,7 @@ void test_insert_head_seq(size_t sz)
 }
 
 
-void test_insert_head_random(size_t sz)
+void test_push_random(size_t sz)
 {
    TEST_ASSERT_NOT_EQUAL_size_t(0, sz);
    size_t i;
