@@ -19,11 +19,11 @@ Legend: ✅ done, ⬜ todo
 
 ## Pop (remove from head)
 
-- ⬜ `test_pop` — composite test unit
+- ✅ `test_pop` — composite test unit
   - ~~⬜ pop on empty list~~ *!!! it's ***caller's*** responsibility to check whether it's valid to pop!!!*
-  - ⬜ push 1, pop 1 → list empty, head NULL, size 0
-  - ⬜ push N, pop N one-by-one → verify head and size after each pop
-  - ⬜ push N, pop all → head NULL
+  - ✅ push 1, pop 1 → list empty, head NULL, size 0 (`test_pop_once`)
+  - ✅ push N, pop N one-by-one → verify head and size after each pop (`test_pop_seq`)
+  - ✅ push N, pop all → head NULL (`test_pop_all`)
 
 ---
 
