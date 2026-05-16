@@ -38,6 +38,10 @@ Legend: ✅ done, ⬜ todo
     - ✅ insert 1 element at position size−1, right before tail (`test_insert_mid_postail`)
     - ✅ insert into 2‑node list, only one middle position (`test_insert_mid_2node`)
   - ⬜ insert n > 1 elements in one call
+    - ✅ insert n > 1 at midpoint — verify block order matches source array (`test_insert_mid_multi`)
+    - ✅ insert n > 1 right after head, position 1 (`test_insert_mid_multi_pos1`)
+    - ✅ insert n > 1 right before tail, position size−1 (`test_insert_mid_multi_postail`)
+    - ✅ insert n = 0, no‑op — list unchanged, returns 0 (`test_insert_mid_n0`)
   - ⬜ insert into empty list
   - ⬜ malloc failure: list reverts to pre-call state
 
