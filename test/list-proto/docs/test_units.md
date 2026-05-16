@@ -20,7 +20,7 @@ Legend: ✅ done, ⬜ todo
 ## Pop (remove from head)
 
 - ⬜ `test_pop` — composite test unit
-  - ⬜ pop on empty list
+  - ~~⬜ pop on empty list~~ *!!! it's ***caller's*** responsibility to check whether it's valid to pop!!!*
   - ⬜ push 1, pop 1 → list empty, head NULL, size 0
   - ⬜ push N, pop N one-by-one → verify head and size after each pop
   - ⬜ push N, pop all → head NULL
