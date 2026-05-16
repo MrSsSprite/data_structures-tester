@@ -12,6 +12,7 @@ void test_push_random(size_t sz);
 void test_insert_mid_once(size_t sz);
 void test_insert_head_seq(size_t sz);
 void test_insert_head_random(size_t sz);
+void test_insert_head_foreign_val(size_t sz);
 /*------------------------- Private Declarations END -------------------------*/
 
 
@@ -33,6 +34,7 @@ void test_insert(void)
       test_insert_mid_once(list_sz);
       test_insert_head_seq(list_sz);
       test_insert_head_random(list_sz);
+      test_insert_head_foreign_val(list_sz);
     }
 }
 /*------------------------------ Test Units END ------------------------------*/
@@ -204,6 +206,55 @@ void test_insert_head_random(size_t sz)
    TEST_ASSERT_NULL(*iter);
 
    free(arr);
+   list__i_deinit(list);
+}
+
+
+void test_insert_head_foreign_val(size_t sz)
+{
+   List__i list = list__i_init();
+   TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
+   TEST_ASSERT_NULL_MESSAGE(list->head,
+                            "`list->head' not initialized to NULL");
+   TEST_ASSERT_EQUAL_UINT_MESSAGE(0, list->size,
+                                  "`list->size' not initialized to 0");
+
+   for (size_t i = sz; i;)
+      TEST_ASSERT_EQUAL_INT(0, list__i_push(list, --i));
+   TEST_ASSERT_EQUAL_size_t(sz, list->size);
+   TEST_ASSERT_NOT_NULL(list->head);
+
+   List_Node__i *iter = list__i_head(list);
+   TEST_ASSERT_NOT_NULL(iter);
+
+   for (size_t i = 0; i < sz; iter = &(*iter)->next, i++)
+    {
+      TEST_ASSERT_NOT_NULL(*iter);
+      TEST_ASSERT_EQUAL_INT(i, (*iter)->value);
+    }
+
+   int ival = 0xAB;
+   list__i_insert(list, list__i_head(list), &ival, 1);
+   ival = 0xCD;
+   list__i_insert(list, list__i_head(list), &ival, 1);
+
+   iter = list__i_head(list);
+   TEST_ASSERT_NOT_NULL(iter);
+   TEST_ASSERT_NOT_NULL(*iter);
+   TEST_ASSERT_EQUAL(0xCD, (*iter)->value);
+   iter = &(*iter)->next;
+   TEST_ASSERT_NOT_NULL(iter);
+   TEST_ASSERT_NOT_NULL(*iter);
+   TEST_ASSERT_EQUAL(0xAB, (*iter)->value);
+   iter = &(*iter)->next;
+   TEST_ASSERT_NOT_NULL(iter);
+   TEST_ASSERT_NOT_NULL(*iter);
+   for (size_t i = 0; i < sz; iter = &(*iter)->next, i++)
+    {
+      TEST_ASSERT_NOT_NULL(*iter);
+      TEST_ASSERT_EQUAL_INT(i, (*iter)->value);
+    }
+
    list__i_deinit(list);
 }
 /*------------------------------ Test Cases END ------------------------------*/
