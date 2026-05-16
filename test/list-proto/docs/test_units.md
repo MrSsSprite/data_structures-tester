@@ -43,6 +43,9 @@ Legend: ✅ done, ⬜ todo
     - ✅ insert n > 1 right before tail, position size−1 (`test_insert_mid_multi_postail`)
     - ✅ insert n = 0, no‑op — list unchanged, returns 0 (`test_insert_mid_n0`)
   - ⬜ insert into empty list
+    - ⬜ insert n = 1 — head points to new node, size = 1
+    - ⬜ insert n > 1 — block appears in source order, tail‑>next is NULL
+    - ⬜ insert n = 0 (no‑op) — list stays empty, head NULL, size 0, returns 0
   - ⬜ malloc failure: list reverts to pre-call state
 
 ---
