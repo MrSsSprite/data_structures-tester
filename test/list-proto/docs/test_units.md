@@ -29,7 +29,7 @@ Legend: ✅ done, ⬜ todo
 
 ## Insert (at arbitrary position)
 
-- ⬜ `test_insert` — composite test unit
+- ✅ `test_insert` — composite test unit
   - ✅ insert at head (`pos = &list->head`) — equivalent to push
   - ✅ insert at tail (`test_insert_tail`)
     - ✅ insert n = 1 — append single element, verify new tail‑>next is NULL
