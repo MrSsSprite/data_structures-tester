@@ -24,6 +24,9 @@ Legend: ✅ done, ⬜ todo
   - ✅ push 1, pop 1 → list empty, head NULL, size 0 (`test_pop_once`)
   - ✅ push N, pop N one-by-one → verify head and size after each pop (`test_pop_seq`)
   - ✅ push N, pop all → head NULL (`test_pop_all`)
+  - ✅ push‑pop interleaved — push, pop half, push more, pop all (`test_pop_interleaved`)
+  - ✅ rebuild after drain — pop all to empty, then push again (`test_pop_rebuild`)
+  - ✅ pop after insert — build list via `list__i_insert`, then pop and verify (`test_pop_after_insert`)
 
 ---
 
