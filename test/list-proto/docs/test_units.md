@@ -33,6 +33,10 @@ Legend: ✅ done, ⬜ todo
   - ✅ insert at head (`pos = &list->head`) — equivalent to push
   - ⬜ insert at tail (`pos` after last node)
   - ⬜ insert in middle
+    - ✅ insert 1 element at exact midpoint (`test_insert_mid_once`)
+    - ✅ insert 1 element at position 1, right after head (`test_insert_mid_pos1`)
+    - ✅ insert 1 element at position size−1, right before tail (`test_insert_mid_postail`)
+    - ✅ insert into 2‑node list, only one middle position (`test_insert_mid_2node`)
   - ⬜ insert n > 1 elements in one call
   - ⬜ insert into empty list
   - ⬜ malloc failure: list reverts to pre-call state
