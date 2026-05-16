@@ -20,6 +20,7 @@ void test_insert_mid_multi(size_t sz);
 void test_insert_mid_multi_pos1(size_t sz);
 void test_insert_mid_multi_postail(size_t sz);
 void test_insert_mid_n0(size_t sz);
+void test_insert_empty(size_t sz);
 /*------------------------- Private Declarations END -------------------------*/
 
 
@@ -46,6 +47,7 @@ void test_insert(void)
       test_insert_mid_multi_pos1(list_sz);
       test_insert_mid_multi_postail(list_sz);
       test_insert_mid_n0(list_sz);
+      test_insert_empty(list_sz);
       test_insert_head_seq(list_sz);
       test_insert_head_random(list_sz);
       test_insert_head_foreign_val(list_sz);
@@ -444,6 +446,62 @@ void test_insert_mid_n0(size_t sz)
       TEST_ASSERT_EQUAL_INT(--i, (*iter)->value);
     }
 
+   list__i_deinit(list);
+}
+
+
+void test_insert_empty(size_t sz)
+{
+   if (sz != 1) return;
+
+   /* n = 1 */
+   List__i list = list__i_init();
+   TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
+   TEST_ASSERT_NULL_MESSAGE(list->head,
+                            "`list->head' not initialized to NULL");
+   TEST_ASSERT_EQUAL_UINT_MESSAGE(0, list->size,
+                                  "`list->size' not initialized to 0");
+
+   int ival = 42;
+   TEST_ASSERT_EQUAL_INT(0, list__i_insert(list, list__i_head(list), &ival, 1));
+   TEST_ASSERT_EQUAL_size_t(1, list->size);
+   TEST_ASSERT_NOT_NULL(list->head);
+   TEST_ASSERT_EQUAL_INT(42, list->head->value);
+   TEST_ASSERT_NULL(list->head->next);
+   list__i_deinit(list);
+
+   /* n > 1 */
+   list = list__i_init();
+   TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
+   TEST_ASSERT_NULL_MESSAGE(list->head,
+                            "`list->head' not initialized to NULL");
+   TEST_ASSERT_EQUAL_UINT_MESSAGE(0, list->size,
+                                  "`list->size' not initialized to 0");
+
+   int vals[] = {10, 20, 30};
+   TEST_ASSERT_EQUAL_INT(0, list__i_insert(list, list__i_head(list), vals, 3));
+   TEST_ASSERT_EQUAL_size_t(3, list->size);
+   TEST_ASSERT_NOT_NULL(list->head);
+   TEST_ASSERT_EQUAL_INT(10, list->head->value);
+   TEST_ASSERT_NOT_NULL(list->head->next);
+   TEST_ASSERT_EQUAL_INT(20, list->head->next->value);
+   TEST_ASSERT_NOT_NULL(list->head->next->next);
+   TEST_ASSERT_EQUAL_INT(30, list->head->next->next->value);
+   TEST_ASSERT_NULL(list->head->next->next->next);
+   list__i_deinit(list);
+
+   /* n = 0 */
+   list = list__i_init();
+   TEST_ASSERT_MESSAGE(list, "`list__i_init' failure");
+   TEST_ASSERT_NULL_MESSAGE(list->head,
+                            "`list->head' not initialized to NULL");
+   TEST_ASSERT_EQUAL_UINT_MESSAGE(0, list->size,
+                                  "`list->size' not initialized to 0");
+
+   int dummy = 0;
+   TEST_ASSERT_EQUAL_INT(0, list__i_insert(list, list__i_head(list), &dummy, 0));
+   TEST_ASSERT_EQUAL_size_t(0, list->size);
+   TEST_ASSERT_NULL(list->head);
    list__i_deinit(list);
 }
 
