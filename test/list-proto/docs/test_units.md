@@ -6,14 +6,14 @@ Legend: ✅ done, ⬜ todo
 
 ## Init / Deinit
 
-- ⬜ `test_simp_init` — list is non-NULL, head is NULL, size is 0
+- ✅ `test_simp_init` — list is non-NULL, head is NULL, size is 0
 
 ---
 
 ## Push (insert at head)
 
-- ⬜ `test_insert_head_seq` — push 1..N sequentially, verify reverse order at head
-- ⬜ `test_insert_head_random` — push N random values, verify same order at head
+- ✅ `test_insert_head_seq` — push 1..N sequentially, verify reverse order at head
+- ✅ `test_insert_head_random` — push N random values, verify same order at head
 
 ---
 
@@ -30,7 +30,7 @@ Legend: ✅ done, ⬜ todo
 ## Insert (at arbitrary position)
 
 - ⬜ `test_insert` — composite test unit
-  - ⬜ insert at head (`pos = &list->head`) — equivalent to push
+  - ✅ insert at head (`pos = &list->head`) — equivalent to push
   - ⬜ insert at tail (`pos` after last node)
   - ⬜ insert in middle
   - ⬜ insert n > 1 elements in one call
