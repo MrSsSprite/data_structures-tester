@@ -31,10 +31,10 @@ Legend: ✅ done, ⬜ todo
 
 - ⬜ `test_insert` — composite test unit
   - ✅ insert at head (`pos = &list->head`) — equivalent to push
-  - ⬜ insert at tail (`pos` after last node)
-    - ⬜ insert n = 1 — append single element, verify new tail‑>next is NULL
-    - ⬜ insert n > 1 — append block, verify source order and tail‑>next is NULL
-    - ⬜ insert n = 0 (no‑op) — list unchanged, returns 0
+  - ✅ insert at tail (`test_insert_tail`)
+    - ✅ insert n = 1 — append single element, verify new tail‑>next is NULL
+    - ✅ insert n > 1 — append block, verify source order and tail‑>next is NULL
+    - ✅ insert n = 0 (no‑op) — list unchanged, returns 0
   - ✅ insert in middle
     - ✅ insert 1 element at exact midpoint (`test_insert_mid_once`)
     - ✅ insert 1 element at position 1, right after head (`test_insert_mid_pos1`)
