@@ -114,6 +114,11 @@ Legend: ✅ done, ⬜ todo
 
 ## Stress
 
-- ⬜ `test_stress` — composite test unit
-  - ⬜ large-N push / pop cycle
-  - ⬜ random mixed-operation sequence with size and content invariant checks
+- ✅ `test_stress` — composite test unit
+  - ✅ large-N push / pop cycle — verify head and size invariants at scale
+  - ✅ random mixed-operation sequence — push, pop, insert, erase, find interleaved with size and content invariant checks after every step; use seeded RNG for reproducibility
+  - ✅ drain-and-refill cycles — fill to N, pop all to empty, repeat many times; validates no corruption or leak accumulates across full-drain boundaries
+  - ✅ insert/erase churn — repeatedly insert and erase at randomly chosen middle positions on a mid-sized list; stresses pointer rewiring away from head/tail edges
+  - ✅ large-N find — find existing and non-existing values on a large list; stresses traversal correctness at scale (read-only path)
+  - ✅ degenerate access patterns — rapid-fire operations always targeting the same edge (head-only push/pop, tail-only insert/erase, position-1-only insert/erase); catches boundary pointer bugs that only surface under sustained repetition
+  - ✅ allocate-deallocate stress — allocate N nodes, deallocate all, repeat many times; verifies no memory leaks and that allocator pressure does not corrupt metadata

@@ -18,6 +18,7 @@ int main(void)
    RUN_TEST(test_erase);
    RUN_TEST(test_find);
    RUN_TEST(test_size);
+   RUN_TEST(test_stress);
 
    return UNITY_END();
 }

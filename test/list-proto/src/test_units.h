@@ -9,6 +9,7 @@ void test_pop(void);
 void test_erase(void);
 void test_find(void);
 void test_size(void);
+void test_stress(void);
 /*------------------------ Test Unit Declarations END ------------------------*/
 
 #endif
