@@ -62,13 +62,13 @@ Legend: ✅ done, ⬜ todo
 
 ## Erase
 
-- ⬜ `test_erase` — composite test unit
-  - ⬜ erase 1 from head
-  - ⬜ erase 1 from tail
-  - ⬜ erase 1 from middle
-  - ⬜ erase n elements (n > 1)
-  - ⬜ erase all (n = size) → empty list
-  - ⬜ erase 0 elements (no-op)
+- ✅ `test_erase` — composite test unit
+  - ✅ erase 1 from head
+  - ✅ erase 1 from tail
+  - ✅ erase 1 from middle
+  - ✅ erase n elements (n > 1)
+  - ✅ erase all (n = size) → empty list
+  - ✅ erase 0 elements (no-op)
 
 ---
 

@@ -6,6 +6,7 @@ void test_simp_init(void);
 void test_push(void);
 void test_insert(void);
 void test_pop(void);
+void test_erase(void);
 /*------------------------ Test Unit Declarations END ------------------------*/
 
 #endif
