@@ -74,12 +74,18 @@ Legend: ✅ done, ⬜ todo
 
 ## Find
 
-- ⬜ `test_find` — composite test unit
-  - ⬜ find value at head / middle / tail
-  - ⬜ find non-existing value → NULL
-  - ⬜ find in empty list → NULL
-  - ⬜ find with custom comparator
-  - ⬜ find when multiple nodes match → first occurrence returned
+- ✅ `test_find` — composite test unit
+  - ✅ find value at head (`test_find_hit`)
+  - ✅ find value at middle (`test_find_hit`)
+  - ✅ find value at tail (`test_find_hit`)
+  - ✅ find non-existing value → NULL (`test_find_miss`)
+  - ✅ find in empty list → NULL (`test_find_empty`)
+  - ✅ find in single‑element list — head == tail (`test_find_hit`)
+  - ✅ find with NULL comparator — built‑in memcmp fallback (`test_find_null_cmp`)
+  - ✅ find with custom comparator (`test_find_custom_cmp`)
+  - ✅ find when multiple nodes match → first occurrence returned (`test_find_dupes`)
+  - ✅ resume search after match → find second occurrence (`test_find_dupes`)
+  - ✅ find from non‑head starting position — earlier nodes skipped (`test_find_start_at`)
 
 ---
 
