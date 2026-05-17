@@ -91,9 +91,24 @@ Legend: ✅ done, ⬜ todo
 
 ## Size invariant
 
-- ⬜ `test_size` — composite test unit
-  - ⬜ size after push, pop, insert, erase
-  - ⬜ size after mixed-operation sequence (push + insert + erase + pop interleaved)
+- ✅ `test_size` — composite test unit
+  - ✅ per-operation baseline
+    - ✅ init → size = 0
+    - ✅ push → size += 1
+    - ✅ pop → size -= 1
+    - ✅ insert n → size += n
+    - ✅ erase n → size -= n
+  - ✅ no-op preservation
+    - ✅ insert n = 0 → size unchanged, returns 0
+    - ✅ erase n = 0 → size unchanged
+  - ✅ size-structure consistency invariant
+    - ✅ `size == 0` ⇔ `head == NULL` (check both directions)
+    - ✅ `size > 0` ⇔ `head != NULL`
+    - ✅ manual node-count by traversal matches `size` field
+  - ✅ rebuild: pop all to empty, push again, verify size recovers correctly
+  - ✅ size after mixed-operation sequence — push + insert + erase + pop interleaved with known expected count at each step
+  - ⬜ size unchanged on failed insert (requires malloc-failure injection)
+  - ⬜ size unchanged on failed push (requires malloc-failure injection)
 
 ---
 

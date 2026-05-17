@@ -17,6 +17,7 @@ int main(void)
    RUN_TEST(test_pop);
    RUN_TEST(test_erase);
    RUN_TEST(test_find);
+   RUN_TEST(test_size);
 
    return UNITY_END();
 }
