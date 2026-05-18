@@ -7,6 +7,7 @@
 
 /*--------------------------- Public Declarations ----------------------------*/
 List__declare(int, i);
+List__declare(float, f);
 /*------------------------- Public Declarations END --------------------------*/
 
 /*--------------------------- Public Struct Reveal ---------------------------*/
