@@ -5,7 +5,7 @@ TARGET_NAME := list
 # Test Unit Source Directory
 TU_SRC_DIR := src
 # Source files which need to be compiled
-SRCS += main.c
+SRCS += main.c ds.c
 
 # Auto Expansions (update not required)
 TARGET    := $(BIN_DIR)/$(TARGET_NAME)
