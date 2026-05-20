@@ -1,4 +1,4 @@
-#include "type/int.h"
+#include "type/float.h"
 
 #include "template/simp_init.temp.h"
 #include "template/test_push.temp.h"
