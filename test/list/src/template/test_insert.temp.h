@@ -87,7 +87,10 @@ static void test_insert_mid_once(size_t sz)
    TEST_ASSERT_NOT_NULL(iter);
    iter = LIST__FUNC(head)(list);
    for (size_t i = sz; i; iter = &(*iter)->next)
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+   {
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
+   }
 
    LIST__FUNC(deinit)(list);
 }
@@ -161,7 +164,8 @@ static void test_insert_mid_postail(size_t sz)
    {
       TEST_ASSERT_NOT_NULL(*iter);
       TEST_ASSERT_NOT_NULL((*iter)->next);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(i--), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(i--);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
    LIST_ASSERT_EQ(LIST_SENTINEL_NEG, (*iter)->value);
    iter = &(*iter)->next;
@@ -327,7 +331,8 @@ static void test_insert_mid_multi_postail(size_t sz)
    {
       TEST_ASSERT_NOT_NULL(*iter);
       TEST_ASSERT_NOT_NULL((*iter)->next);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(i--), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(i--);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
    LIST_ASSERT_EQ(vals[0], (*iter)->value);
    iter = &(*iter)->next;
@@ -366,7 +371,8 @@ static void test_insert_mid_n0(size_t sz)
    for (size_t i = sz; i; iter = &(*iter)->next)
    {
       TEST_ASSERT_NOT_NULL(*iter);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
 
    LIST__FUNC(deinit)(list);
@@ -460,7 +466,8 @@ static void test_insert_tail(size_t sz)
    for (size_t i = sz; i; iter = &(*iter)->next)
    {
       TEST_ASSERT_NOT_NULL(*iter);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
    TEST_ASSERT_NOT_NULL(*iter);
    LIST_ASSERT_EQ(LIST_SENTINEL_NEG, (*iter)->value);
@@ -498,7 +505,8 @@ static void test_insert_tail(size_t sz)
    for (size_t i = sz; i; iter = &(*iter)->next)
    {
       TEST_ASSERT_NOT_NULL(*iter);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
    TEST_ASSERT_NOT_NULL(*iter);
    LIST_ASSERT_EQ(vals[0], (*iter)->value);
@@ -537,7 +545,8 @@ static void test_insert_tail(size_t sz)
    for (size_t i = sz; i; iter = &(*iter)->next)
    {
       TEST_ASSERT_NOT_NULL(*iter);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
    LIST__FUNC(deinit)(list);
 }
@@ -596,7 +605,10 @@ static void test_insert_head_random(size_t sz)
    TEST_ASSERT_NOT_NULL(iter);
 
    for (i = 0; i < sz; iter = &(*iter)->next)
-      LIST_ASSERT_EQ(arr[i++], (*iter)->value);
+   {
+      LIST_TYPE val = arr[i++];
+      LIST_ASSERT_EQ(val, (*iter)->value);
+   }
    TEST_ASSERT_NULL(*iter);
 
    free(arr);
@@ -613,7 +625,10 @@ static void test_insert_head_foreign_val(size_t sz)
                                   "`list->size' not initialized to 0");
 
    for (size_t i = sz; i;)
-      TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(push)(list, LIST_VAL_FROM_IDX(--i)));
+   {
+      LIST_TYPE val = LIST_VAL_FROM_IDX(--i);
+      TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(push)(list, val));
+   }
    TEST_ASSERT_EQUAL_size_t(sz, list->size);
    TEST_ASSERT_NOT_NULL(list->head);
 

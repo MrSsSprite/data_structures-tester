@@ -43,7 +43,10 @@ static void test_push_seq(size_t sz)
    TEST_ASSERT_NOT_NULL(iter);
 
    for (size_t i = sz; i; iter = &(*iter)->next)
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+   {
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
+   }
 
    LIST__FUNC(deinit)(list);
 }
@@ -66,7 +69,10 @@ static void test_push_random(size_t sz)
                                   "`list->size' not initialized to 0");
 
    while (i)
-      TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(push)(list, arr[--i]));
+   {
+      LIST_TYPE val = arr[--i];
+      TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(push)(list, val));
+   }
    TEST_ASSERT_EQUAL_size_t(sz, list->size);
    TEST_ASSERT_NOT_NULL(list->head);
 
@@ -74,7 +80,10 @@ static void test_push_random(size_t sz)
    TEST_ASSERT_NOT_NULL(iter);
 
    for (i = 0; i < sz; iter = &(*iter)->next)
-      LIST_ASSERT_EQ(arr[i++], (*iter)->value);
+   {
+      LIST_TYPE val = arr[i++];
+      LIST_ASSERT_EQ(val, (*iter)->value);
+   }
    TEST_ASSERT_NULL(*iter);
 
    free(arr);

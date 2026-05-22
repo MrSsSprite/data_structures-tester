@@ -59,7 +59,8 @@ static void test_erase_head(size_t sz)
       for (size_t i = sz - 1; i; iter = &(*iter)->next)
       {
          TEST_ASSERT_NOT_NULL(*iter);
-         LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+         LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+         LIST_ASSERT_EQ(expected, (*iter)->value);
       }
    }
 
@@ -232,7 +233,8 @@ static void test_erase_n0(size_t sz)
    for (size_t i = sz; i; iter = &(*iter)->next)
    {
       TEST_ASSERT_NOT_NULL(*iter);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(--i), (*iter)->value);
+      LIST_TYPE expected = LIST_VAL_FROM_IDX(--i);
+      LIST_ASSERT_EQ(expected, (*iter)->value);
    }
 
    LIST__FUNC(deinit)(list);
