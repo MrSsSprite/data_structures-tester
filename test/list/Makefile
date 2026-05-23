@@ -7,7 +7,7 @@ TU_SRC_DIR := src
 # Source files which need to be compiled
 SRCS += main.c ds.c
 # Instantiator source files (include template headers)
-INST_SRCS := int.c float.c double.c char.c unsigned_int.c long.c
+INST_SRCS := int.c float.c double.c char.c unsigned_int.c long.c point.c
 # Template files (auto-discovered)
 TEMPLATES := $(wildcard $(TU_SRC_DIR)/template/*.temp.h)
 

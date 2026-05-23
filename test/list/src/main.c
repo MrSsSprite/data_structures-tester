@@ -58,5 +58,13 @@ int main(void)
    RUN_TEST(test_stress__c);
    RUN_TEST(test_stress__u);
    RUN_TEST(test_stress__l);
+   RUN_TEST(test_simp_init__p);
+   RUN_TEST(test_push__p);
+   RUN_TEST(test_insert__p);
+   RUN_TEST(test_pop__p);
+   RUN_TEST(test_erase__p);
+   RUN_TEST(test_find__p);
+   RUN_TEST(test_size__p);
+   RUN_TEST(test_stress__p);
    return UNITY_END();
 }

@@ -13,6 +13,7 @@ List__declare(double, d);
 List__declare(unsigned char, c);
 List__declare(unsigned int, u);
 List__declare(long, l);
+List__declare(Point, p);
 /*------------------------- Public Declarations END --------------------------*/
 
 /*--------------------------- Public Struct Reveal ---------------------------*/
@@ -29,6 +30,7 @@ _DS_STRUCT_REVEAL(d);
 _DS_STRUCT_REVEAL(c);
 _DS_STRUCT_REVEAL(u);
 _DS_STRUCT_REVEAL(l);
+_DS_STRUCT_REVEAL(p);
 
 #undef _DS_STRUCT_REVEAL
 /*------------------------- Public Struct Reveal END -------------------------*/

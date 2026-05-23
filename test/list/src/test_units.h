@@ -50,6 +50,14 @@ void test_stress__d(void);
 void test_stress__c(void);
 void test_stress__u(void);
 void test_stress__l(void);
+void test_simp_init__p(void);
+void test_push__p(void);
+void test_insert__p(void);
+void test_pop__p(void);
+void test_erase__p(void);
+void test_find__p(void);
+void test_size__p(void);
+void test_stress__p(void);
 /*------------------------ Test Unit Declarations END ------------------------*/
 
 #endif
