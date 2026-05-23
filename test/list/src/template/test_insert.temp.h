@@ -26,7 +26,7 @@ static void test_insert_tail(size_t sz);
 /*-------------------------------- Test Unit ---------------------------------*/
 void LIST__TEST(test_insert)(void)
 {
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_insert_mid_once(list_sz);
       test_insert_mid_pos1(list_sz);

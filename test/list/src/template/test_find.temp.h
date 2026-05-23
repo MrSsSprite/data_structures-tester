@@ -21,7 +21,7 @@ static int find_never_match(const void *a, const void *b);
 /*-------------------------------- Test Unit ---------------------------------*/
 void LIST__TEST(test_find)(void)
 {
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_find_hit(list_sz);
       test_find_miss(list_sz);
@@ -38,7 +38,7 @@ void LIST__TEST(test_find)(void)
 static int find_cmp(const void *a, const void *b)
 {
    LIST_TYPE va = *(const LIST_TYPE *)a, vb = *(const LIST_TYPE *)b;
-   return (va > vb) - (va < vb);
+   return LIST_CMP_GT(va, vb) - LIST_CMP_LT(va, vb);
 }
 
 static int find_never_match(const void *a, const void *b)
@@ -99,7 +99,7 @@ static void test_find_miss(size_t sz)
    result = LIST__FUNC(find)(LIST__FUNC(head)(list), LIST_SENTINEL_NEG, NULL);
    TEST_ASSERT_NULL_MESSAGE(result, "`" LIST__STR_EXPAND(LIST__FUNC(find)) "' returned non-NULL for foreign value");
 
-   result = LIST__FUNC(find)(LIST__FUNC(head)(list), (LIST_TYPE)sz, NULL);
+   result = LIST__FUNC(find)(LIST__FUNC(head)(list), LIST_SENTINEL_NEG, NULL);
    TEST_ASSERT_NULL_MESSAGE(result, "`" LIST__STR_EXPAND(LIST__FUNC(find)) "' returned non-NULL for foreign value");
 
    LIST__FUNC(deinit)(list);

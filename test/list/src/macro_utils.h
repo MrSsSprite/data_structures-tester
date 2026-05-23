@@ -29,5 +29,9 @@
 #define LIST__STR(name)             #name
 #define LIST__STR_EXPAND(name)      LIST__STR(name)
 
+#ifndef LIST_MAX_SZ
+#define LIST_MAX_SZ 0x100000
+#endif
+
 
 #endif

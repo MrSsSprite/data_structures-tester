@@ -20,7 +20,7 @@ void LIST__TEST(test_pop)(void)
 {
    test_pop_once();
 
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_pop_seq(list_sz);
       test_pop_all(list_sz);

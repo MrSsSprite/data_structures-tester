@@ -15,7 +15,7 @@ static void test_push_random(size_t sz);
 /*-------------------------------- Test Unit ---------------------------------*/
 void LIST__TEST(test_push)(void)
 {
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_push_seq(list_sz);
       test_push_random(list_sz);

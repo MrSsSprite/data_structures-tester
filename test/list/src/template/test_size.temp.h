@@ -19,7 +19,7 @@ void LIST__TEST(test_size)(void)
 {
    test_size_noop_empty();
 
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_size_per_op(list_sz);
       test_size_noop(list_sz);

@@ -17,7 +17,7 @@ static void test_erase_n0(size_t sz);
 /*-------------------------------- Test Unit ---------------------------------*/
 void LIST__TEST(test_erase)(void)
 {
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_erase_head(list_sz);
       test_erase_tail(list_sz);
@@ -134,7 +134,7 @@ static void test_erase_mid(size_t sz)
    for (size_t i = sz; i;)
    {
       size_t val = --i;
-      if (LIST_VAL_FROM_IDX(val) == erased_val) continue;  /* not LIST_EQ — value identity check */
+      if (LIST_VALUE_IDENTITY(LIST_VAL_FROM_IDX(val), erased_val)) continue;
       TEST_ASSERT_NOT_NULL(*iter);
       LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(val), (*iter)->value);
       iter = &(*iter)->next;
@@ -164,9 +164,9 @@ static void test_erase_multi(size_t sz)
    for (size_t i = 0; i < sz / 2; i++)
       pos = &(*pos)->next;
 
-   size_t e1 = (*pos)->value;
-   size_t e2 = (*pos)->next->value;
-   size_t e3 = (*pos)->next->next->value;
+   LIST_TYPE e1 = (*pos)->value;
+   LIST_TYPE e2 = (*pos)->next->value;
+   LIST_TYPE e3 = (*pos)->next->next->value;
 
    LIST__FUNC(erase)(list, pos, n);
    TEST_ASSERT_EQUAL_size_t(sz - n, list->size);
@@ -175,9 +175,12 @@ static void test_erase_multi(size_t sz)
    for (size_t i = sz; i;)
    {
       size_t val = --i;
-      if (val == e1 || val == e2 || val == e3) continue;
+      LIST_TYPE idx_val = LIST_VAL_FROM_IDX(val);
+      if (LIST_VALUE_IDENTITY(idx_val, e1) ||
+          LIST_VALUE_IDENTITY(idx_val, e2) ||
+          LIST_VALUE_IDENTITY(idx_val, e3)) continue;
       TEST_ASSERT_NOT_NULL(*iter);
-      LIST_ASSERT_EQ(LIST_VAL_FROM_IDX(val), (*iter)->value);
+      LIST_ASSERT_EQ(idx_val, (*iter)->value);
       iter = &(*iter)->next;
    }
 

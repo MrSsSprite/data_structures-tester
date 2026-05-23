@@ -16,6 +16,10 @@
 #define LIST_SENTINEL_MULTI   { -3, -2, -1 }
 #define LIST_SENTINEL_INSERT  { 10, 20, 30 }
 #define LIST_SENTINEL_SIZE    { 100, 200, 300 }
+#define LIST_VALUE_IDENTITY(a, b)  ((a) == (b))
+#define LIST_SENTINEL_FROM_IDX(i)  ((LIST_TYPE)(-(int)(i)))
+#define LIST_CMP_GT(a, b)          ((a) > (b))
+#define LIST_CMP_LT(a, b)          ((a) < (b))
 
 
 #endif

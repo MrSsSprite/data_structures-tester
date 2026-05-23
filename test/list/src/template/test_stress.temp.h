@@ -21,7 +21,7 @@ static int stress_never_match(const void *a, const void *b);
 /*-------------------------------- Test Unit ---------------------------------*/
 void LIST__TEST(test_stress)(void)
 {
-   for (size_t list_sz = 1; list_sz <= 0x100000; list_sz *= 2)
+   for (size_t list_sz = 1; list_sz <= LIST_MAX_SZ; list_sz *= 2)
    {
       test_stress_push_pop_cycle(list_sz);
       test_stress_random_ops(list_sz);
@@ -38,7 +38,7 @@ void LIST__TEST(test_stress)(void)
 static int stress_cmp(const void *a, const void *b)
 {
    LIST_TYPE va = *(const LIST_TYPE *)a, vb = *(const LIST_TYPE *)b;
-   return (va > vb) - (va < vb);
+   return LIST_CMP_GT(va, vb) - LIST_CMP_LT(va, vb);
 }
 
 static int stress_never_match(const void *a, const void *b)
@@ -153,7 +153,7 @@ static void test_stress_random_ops(size_t sz)
 
          case 5: /* find missing */
             result = LIST__FUNC(find)(LIST__FUNC(head)(list),
-                                      (LIST_TYPE)(-(int)(i + 2)), NULL);
+                                      LIST_SENTINEL_FROM_IDX(i + 2), NULL);
             TEST_ASSERT_NULL(result);
             break;
       }
@@ -225,7 +225,7 @@ static void test_stress_churn(size_t sz)
       for (size_t j = 0; j < skip; j++)
          pos = &(*pos)->next;
 
-      LIST_TYPE ival = (LIST_TYPE)(-(int)(i + 1));
+      LIST_TYPE ival = LIST_SENTINEL_FROM_IDX(i + 1);
       TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(insert)(list, pos, &ival, 1));
       TEST_ASSERT_EQUAL_size_t(sz + 1, list->size);
 
@@ -287,7 +287,7 @@ static void test_stress_find_large(size_t sz)
    result = LIST__FUNC(find)(LIST__FUNC(head)(list), LIST_SENTINEL_NEG, NULL);
    TEST_ASSERT_NULL(result);
 
-   result = LIST__FUNC(find)(LIST__FUNC(head)(list), (LIST_TYPE)sz, NULL);
+   result = LIST__FUNC(find)(LIST__FUNC(head)(list), LIST_SENTINEL_NEG, NULL);
    TEST_ASSERT_NULL(result);
 
    /* custom comparator */
@@ -377,7 +377,7 @@ static void test_stress_degenerate(size_t sz)
          while (*pos)
             pos = &(*pos)->next;
 
-         LIST_TYPE ival = (LIST_TYPE)(-(int)(i + 1));
+         LIST_TYPE ival = LIST_SENTINEL_FROM_IDX(i + 1);
          TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(insert)(list, pos, &ival, 1));
          TEST_ASSERT_EQUAL_size_t(sz + 1, list->size);
 
@@ -418,7 +418,7 @@ static void test_stress_degenerate(size_t sz)
          LIST__NODE_TYPE *pos = LIST__FUNC(head)(list);
          pos = &(*pos)->next;
 
-         LIST_TYPE ival = (LIST_TYPE)(-(int)(i + 1));
+         LIST_TYPE ival = LIST_SENTINEL_FROM_IDX(i + 1);
          TEST_ASSERT_EQUAL_INT(0, LIST__FUNC(insert)(list, pos, &ival, 1));
          TEST_ASSERT_EQUAL_size_t(sz + 1, list->size);
 
