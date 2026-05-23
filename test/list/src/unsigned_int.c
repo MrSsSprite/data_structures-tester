@@ -1,0 +1,10 @@
+#include "type/unsigned_int.h"
+
+#include "template/simp_init.temp.h"
+#include "template/test_push.temp.h"
+#include "template/test_insert.temp.h"
+#include "template/test_pop.temp.h"
+#include "template/test_size.temp.h"
+#include "template/test_find.temp.h"
+#include "template/test_erase.temp.h"
+#include "template/test_stress.temp.h"

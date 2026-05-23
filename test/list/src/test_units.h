@@ -4,20 +4,52 @@
 /*-------------------------- Test Unit Declarations --------------------------*/
 void test_simp_init__i(void);
 void test_simp_init__f(void);
+void test_simp_init__d(void);
+void test_simp_init__c(void);
+void test_simp_init__u(void);
+void test_simp_init__l(void);
 void test_push__i(void);
 void test_push__f(void);
+void test_push__d(void);
+void test_push__c(void);
+void test_push__u(void);
+void test_push__l(void);
 void test_insert__i(void);
 void test_insert__f(void);
+void test_insert__d(void);
+void test_insert__c(void);
+void test_insert__u(void);
+void test_insert__l(void);
 void test_pop__i(void);
 void test_pop__f(void);
+void test_pop__d(void);
+void test_pop__c(void);
+void test_pop__u(void);
+void test_pop__l(void);
 void test_erase__i(void);
 void test_erase__f(void);
+void test_erase__d(void);
+void test_erase__c(void);
+void test_erase__u(void);
+void test_erase__l(void);
 void test_find__i(void);
 void test_find__f(void);
+void test_find__d(void);
+void test_find__c(void);
+void test_find__u(void);
+void test_find__l(void);
 void test_size__i(void);
 void test_size__f(void);
+void test_size__d(void);
+void test_size__c(void);
+void test_size__u(void);
+void test_size__l(void);
 void test_stress__i(void);
 void test_stress__f(void);
+void test_stress__d(void);
+void test_stress__c(void);
+void test_stress__u(void);
+void test_stress__l(void);
 /*------------------------ Test Unit Declarations END ------------------------*/
 
 #endif

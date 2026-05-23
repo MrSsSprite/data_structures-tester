@@ -9,6 +9,10 @@
 /*--------------------------- Public Declarations ----------------------------*/
 List__declare(int, i);
 List__declare(float, f);
+List__declare(double, d);
+List__declare(unsigned char, c);
+List__declare(unsigned int, u);
+List__declare(long, l);
 /*------------------------- Public Declarations END --------------------------*/
 
 /*--------------------------- Public Struct Reveal ---------------------------*/
@@ -21,6 +25,10 @@ struct list__##S \
 
 _DS_STRUCT_REVEAL(i);
 _DS_STRUCT_REVEAL(f);
+_DS_STRUCT_REVEAL(d);
+_DS_STRUCT_REVEAL(c);
+_DS_STRUCT_REVEAL(u);
+_DS_STRUCT_REVEAL(l);
 
 #undef _DS_STRUCT_REVEAL
 /*------------------------- Public Struct Reveal END -------------------------*/
